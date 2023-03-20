@@ -30,4 +30,31 @@ router.post('/', (req, res) => {
     })
 })
 
+router.put('/:id', (req, res) => {
+    console.log(`In PUT request /list`);
+    let itemId = req.params.id;
+    let itemToEdit = req.params.body;
+    let sqlText = `UPDATE shoppingList SET "name" = $1, "quantity = $2 WHERE "id" = $3;`;
+    pool.query(sqlText, [itemToEdit.name, itemToEdit.quantity, itemId])
+    .then((result) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log(`Error in PUT ${error}`);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    const deleteIndex = Number(req.params.id);
+    let sqlText = `DELETE FROM shoppingList WHERE "id" = $1`;
+    pool.query(sqlText, [deleteIndex]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error in DELETE ${error}`);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
