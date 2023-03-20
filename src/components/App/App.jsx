@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             <Header />
             <main>
-                <p>Under Construction...</p>
+                {/* <p>Under Construction...</p> */}
             <ShoppingList />
             </main>
         </div>

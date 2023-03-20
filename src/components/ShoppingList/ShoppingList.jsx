@@ -48,6 +48,8 @@ function ShoppingList() {
                        onChange={(e) => setItemQuantity(e.target.value)} />
                 <input type="submit" />
             </form>
+            <button>Reset</button>
+            <button>Clear</button>
             <ul>
                 {
                     listOfItems.map((item) => (
