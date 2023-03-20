@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM shoppingList ORDER BY "name", "quantity";`;
     pool.query(sqlText)
     .then((result) => {
-        console.log(`GET request made from database`, result);
+        // console.log(`GET request made from database`, result);
         res.send(result.rows);
     })
     .catch((error) => {
@@ -45,16 +45,16 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-    console.log(req.params.id);
-    const deleteIndex = Number(req.params.id);
-    let sqlText = `DELETE FROM shoppingList WHERE "id" = $1`;
-    pool.query(sqlText, [deleteIndex]).then((result) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log(`Error in DELETE ${error}`);
-        res.sendStatus(500);
-    });
+router.delete('/deleteList', (req, res) => {
+    // console.log(req.params.id);
+    // const deleteIndex = Number(req.params.id);
+    // let sqlText = `DELETE FROM shoppingList;`;
+    // pool.query(sqlText).then((result) => {
+    //     res.sendStatus(200);
+    // }).catch((error) => {
+    //     console.log(`Error in DELETE ${error}`);
+    //     res.sendStatus(500);
+    // });
 });
 
 module.exports = router;
