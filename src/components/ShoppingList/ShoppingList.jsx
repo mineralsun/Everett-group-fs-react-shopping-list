@@ -15,10 +15,11 @@ function ShoppingList() {
         });
     }
 
-    const deleteList = (listOfItems) => {
+    const deleteList = () => {
     console.log(`Clearing shopping list`);
     axios.delete(`/list/deleteList`)
     .then((response) => {
+        fetchItemList();
         console.log(response);
     }).catch((error) => {
         console.log(error);
@@ -62,7 +63,8 @@ function ShoppingList() {
                 <input type="submit" />
             </form>
             <button>Reset</button>
-            <button onClick={deleteList(listOfItems)}>Clear</button>
+            {/* DONT USE () WHEN REFERENCING FUNCTIONS IN THE RETURN */}
+            <button onClick={deleteList}>Clear</button>
             <ul>
                 {
                     listOfItems.map((item) => (

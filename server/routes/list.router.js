@@ -46,15 +46,14 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/deleteList', (req, res) => {
-    // console.log(req.params.id);
-    // const deleteIndex = Number(req.params.id);
-    // let sqlText = `DELETE FROM shoppingList;`;
-    // pool.query(sqlText).then((result) => {
-    //     res.sendStatus(200);
-    // }).catch((error) => {
-    //     console.log(`Error in DELETE ${error}`);
-    //     res.sendStatus(500);
-    // });
+    console.log('Everett');
+    let sqlText = `DELETE FROM shoppingList;`;
+    pool.query(sqlText).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error in DELETE ${error}`);
+        res.sendStatus(500);
+    });
 });
 
 module.exports = router;
