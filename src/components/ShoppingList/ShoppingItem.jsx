@@ -4,7 +4,7 @@ function ShoppingItem({ item, fetchItemList }) {
 
     const removeItem = (e) => {
         console.log(`removeItem ${item.id}`)
-        axios.delete(`/list/${item.id}`)
+        axios.delete(`/list/deleteOne/${item.id}`)
         .then((response) => {
             fetchItemList();
         }).catch((error) => {

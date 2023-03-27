@@ -47,8 +47,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-    console.log(`In PUT request /list`);
+router.delete('/deleteOne/:id', (req, res) => {
+    console.log(`In DELETE request by ID /list`);
     let itemId = req.params.id;
     let sqlText = `DELETE FROM shoppingList WHERE "id" = $1;`;
     pool.query(sqlText, [itemId])
@@ -56,12 +56,13 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(200);
     })
     .catch((error) => {
-        console.log(`Error in PUT ${error}`);
+        console.log(`Error in DELETE ${error}`);
         res.sendStatus(500);
     });
 });
 
 router.delete('/deleteList', (req, res) => {
+    console.log(`In DELETE request ALL /list`);
     let sqlText = `DELETE FROM shoppingList;`;
     pool.query(sqlText).then((result) => {
         res.sendStatus(200);
@@ -70,5 +71,6 @@ router.delete('/deleteList', (req, res) => {
         res.sendStatus(500);
     });
 });
+
 
 module.exports = router;
